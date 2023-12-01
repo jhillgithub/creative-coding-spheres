@@ -1,13 +1,11 @@
 import { Color } from "three";
+import { GradientSpheres } from "./GradientSpheres";
 
 export const Scene = () => {
   return (
     <>
       <ambientLight />
-      <mesh>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshBasicMaterial color={new Color(0x00ffff)} />
-      </mesh>
+      <GradientSpheres count={10} />
     </>
   );
 };
