@@ -27,6 +27,11 @@ const setColorByPosition = (mesh: Mesh, camera: PerspectiveCamera) => {
   const material = mesh.material as MeshStandardMaterial;
 
   material.color.setHSL(rescaledHue / 360, saturation / 100, lightness / 100);
+  material.emissive.setHSL(
+    rescaledHue / 360,
+    saturation / 100,
+    lightness / 100
+  );
 };
 
 interface SphereProps extends MeshProps {
@@ -66,7 +71,11 @@ export const Sphere = ({
   return (
     <mesh ref={meshRef} {...props}>
       <sphereGeometry args={[radius, 32, 32]} />
-      <meshStandardMaterial color={"white"} />
+      <meshStandardMaterial
+        color={"white"}
+        emissive={"white"}
+        emissiveIntensity={1}
+      />
     </mesh>
   );
 };
