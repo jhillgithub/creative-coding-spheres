@@ -37,14 +37,14 @@ interface SphereProps extends MeshProps {
 export const Sphere = ({
   initialDirection,
   radius = 1,
-  speed = 1,
+  speed = 20,
   ...props
 }: SphereProps) => {
   const meshRef = useRef<Mesh>(null);
   const direction = useRef(initialDirection);
   const { frustum, getClosestPlaneNormal } = useFrustum();
 
-  useFrame(({ camera }) => {
+  useFrame(({ camera }, delta: number) => {
     if (!meshRef.current) return;
     const perspectiveCamera = camera as PerspectiveCamera;
     setColorByPosition(meshRef.current, perspectiveCamera);
@@ -59,7 +59,7 @@ export const Sphere = ({
         ? direction.current.reflect(normalOfClosestPlane)
         : direction.current.multiplyScalar(-1);
     }
-    const velocity = direction.current.multiplyScalar(speed);
+    const velocity = direction.current.clone().multiplyScalar(speed * delta);
     meshRef.current.position.add(velocity);
   });
 
