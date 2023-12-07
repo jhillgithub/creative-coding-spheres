@@ -6,7 +6,7 @@ import { Suspense } from "react";
 export const App = () => {
   return (
     <>
-      <Canvas>
+      <Canvas camera={{ fov: 50, near: 0.1, far: 150, position: [0, 0, 100] }}>
         <color attach="background" args={["slategray"]} />
         <Suspense fallback={null}>
           <Scene />

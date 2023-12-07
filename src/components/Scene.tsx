@@ -1,13 +1,11 @@
-import { GradientSpheres } from "./GradientSpheres";
-import { CustomCamera } from "./CustomCamera";
+import { Spheres } from "./Spheres";
 
 export const Scene = () => {
   return (
     <>
       <ambientLight />
       <directionalLight position={[5, 5, 5]} />
-      <CustomCamera position={[0, 0, 10]} />
-      <GradientSpheres count={100} />
+      <Spheres count={50} />
     </>
   );
 };
